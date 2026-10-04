@@ -43,3 +43,12 @@ if ('IntersectionObserver' in window) {
 } else {
   revealEls.forEach(el => el.classList.add('in'));
 }
+
+// ---------- Hero video ----------
+// Some phones block autoplay until the page is touched; start it then.
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo) {
+  const tryPlay = () => heroVideo.play().catch(() => {});
+  tryPlay();
+  document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+}
